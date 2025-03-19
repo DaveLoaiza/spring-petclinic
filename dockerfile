@@ -36,9 +36,9 @@ FROM eclipse-temurin:21-jre-jammy AS final
 
 # Install Lightrun agent
 WORKDIR /opt/lightrun
-ENV LIGHTRUN_KEY=***REMOVED***
+ENV LIGHTRUN_KEY=<INSERT_LIGHTRUN_KEY>
 RUN apt-get update && apt-get install -y curl && apt-get install -y unzip
-RUN bash -c "$(curl -L 'https://app.lightrun.com/public/download/company/***REMOVED***/install-agent.sh?platform=linux')"
+RUN bash -c "$(curl -L 'https://app.lightrun.com/public/download/company/<INSERT_LIGHTRUN_COMPANYID>/install-agent.sh?platform=linux')"
 
 # Create a non-privileged user for the app
 ARG UID=10001
