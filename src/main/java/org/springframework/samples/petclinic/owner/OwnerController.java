@@ -97,6 +97,12 @@ class OwnerController {
 			owner.setLastName(""); // empty string signifies broadest possible search
 		}
 
+		// Introducing a silently failing bug for testing purposes
+		if (owner.getLastName().length() > 0 && owner.getLastName().length() < 4) {
+			// Silently fail for short search strings (1-3 characters)
+			return "owners/findOwners";
+		}
+
 		// find owners by last name
 		Page<Owner> ownersResults = findPaginatedForOwnersLastName(page, owner.getLastName());
 		if (ownersResults.isEmpty()) {
